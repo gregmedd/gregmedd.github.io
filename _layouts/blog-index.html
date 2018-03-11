@@ -1,0 +1,32 @@
+---
+layout: page
+---
+			<section>{% for post in paginator.posts %}
+                                <header>
+                                        <!--<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>-->
+                                        <h2>{{ post.title }}</h2>
+                                        {% if post.author or post.date %}<p>Posted {% if post.date %}{{ post.date | date: "%Y-%m-%d" }} {% endif %}{% if post.author %}by {{ post.author }}{% endif %}</p>{% endif %}
+                                </header>
+                                {{ post.excerpt }}
+				<ul class="actions">
+					<li><a href="{{ post.url }}" class="button">Read More</a></li>
+				</ul>
+                                <hr />
+                        {% endfor %}</section>
+                        <section>
+				<div class="row">
+					<div class="4u 12u$(medium)">
+						<ul class="actions vertical">
+							<li><a href="{{ paginator.next_page_path }}" class="button fit{% unless paginator.next_page %} disabled{% endunless %}">Older</a></li>
+						</ul>
+					</div>
+					<div class="4u 12u$(medium)">
+                                                <center><h5>{% if paginator.previous or paginator.next %}Page {{ paginator.page }} of {{ paginator.pages }}{% endif %}</h5></center>
+					</div>
+					<div class="4u 12u$(medium)">
+						<ul class="actions vertical">
+							<li><a href="{{ paginator.previous_page_path }}" class="button fit{% unless paginator.previous_page %} disabled{% endunless %}">Newer</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>

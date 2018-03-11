@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<article id="main">
+
+  <header>
+    <h2>{{ page.title }}</h2>
+    {% if page.subtitle %}<p>{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  <section class="wrapper style5">
+    <div class="inner">
+      {% if page.author or page.date %}<header>
+        {% if page.author %}<h5>by {{ page.author }}</h5>{% endif %}
+        {% if page.date %}<p>
+          <em>Posted {{ page.date | date: "%Y-%m-%d %R%z" }}{% if page.updated %}, updated {{ page.updated | date: "%Y-%m-%d %R%z" }}{% endif %}</em>
+        </p>{% endif %}
+      </header>{% endif %}
+      {{ content }}
+      <hr />
+      <div class="row">
+        <div class="5u 12u$(medium)">
+          <ul class="actions vertical">
+            <li><a href="{{ page.previous.url }}" class="button fit{% unless page.previous.url %} disabled{% endunless %}">{% if page.previous.title %}{{ page.previous.title }}{% else %}Nothing older...{% endif %}</a></li>
+          </ul>
+        </div>
+        <div class="2u 12u$(medium)">
+          <center><p></p></center>
+        </div>
+        <div class="5u 12u$(medium)">
+          <ul class="actions vertical">
+            <li><a href="{{ page.next.url }}" class="button fit{% unless page.next.url %} disabled{% endunless %}">{% if page.next.title %}{{ page.next.title }}{% else %}Nothing newer...{% endif %}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</article>
