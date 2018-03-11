@@ -54,7 +54,7 @@ social:
   #amazon:
 
 paginate: 5
-paginate_path: blog/page:num/
+paginate_path: blog/page/:num/
 permalink: pretty
 
 collections:

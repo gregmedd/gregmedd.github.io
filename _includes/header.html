@@ -8,13 +8,16 @@
         <div id="menu">
           <ul>
             <li><a href="index.html">Home</a></li>
-            {% for my_page in site.pages %}
+            {% assign pages = site.pages | sort: 'title' %}
+            {% for my_page in pages %}
             {% if my_page.title %}
+            {% unless my_page.url contains 'blog' and my_page.url contains 'page' %}
             <li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
+            {% endunless %}
             {% endif %}
             {% endfor %}
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">Log In</a></li>
+            <!--<li><a href="#">Sign Up</a></li>-->
+            <!--<li><a href="#">Log In</a></li>-->
             <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}"
                    class="icon fa-feed"> RSS Feed</a></li>
           </ul>
