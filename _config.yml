@@ -53,6 +53,7 @@ social:
   #tripadvisor:
   #amazon:
 
+feed_count: 10
 paginate: 5
 paginate_path: blog/page/:num/
 permalink: pretty
@@ -68,3 +69,4 @@ markdown: kramdown
 
 plugins:
   - jekyll-paginate
+  - jekyll-seo-tag

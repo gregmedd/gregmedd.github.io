@@ -14,10 +14,9 @@
     {% endfor %}
   </ul>
   <ul class="copyright">
-    <li>&copy; {% assign thisyear = site.time | date: "%Y" %}
+    <li>&copy; {% assign thisyear = site.time | date: "%Y" | plus: 0 %}
     {% if site.first_published %}
-      {% capture diff %}{{ site.first_published | minus:thisyear }}{% endcapture %}
-      {% if diff contains '-' %}{{ site.first_published }},{% endif %}
+      {% if thisyear > site.first_published %}{{ site.first_published }},{% endif %}
     {% endif %}
     {{ thisyear }}
     {% if site.owner %}{{ site.owner }}{% else %}{{ site.title }}{% endif %}</li>

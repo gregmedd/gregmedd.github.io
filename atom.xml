@@ -1,0 +1,32 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title | xml_escape }}</title>
+  <updated>{{ site.time | date_to_rfc3339 }}</updated>
+  <id>{{ site.url }}</id>
+  <subtitle>{{ site.description | xml_escape }}</subtitle>
+  <link href="{{ "/" | absolute_url }}" />
+  <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <generator>Jekyll v{{ jekyll.version }}</generator>
+  {% assign thisyear = site.time | date: "%Y" | plus: 0 %}
+  <rights>© {% if site.first_published %}{% if thisyear > site.first_published %}{{ site.first_published }}, {% endif %}{% endif %}{{ thisyear }} {% if site.owner %}{{ site.owner }}{% else %}{{ site.title }}{% endif %}</rights>
+  <icon>{{ "/favicon.ico" | absolute_url }}</icon>
+  {% for post in site.posts limit:site.feed_count %}
+    <entry>
+      <id>{{ post.url | xml_escape }}</id>
+      <title>{{ post.title | xml_escape }}</title>
+      <updated>{% if post.updated %}{{ post.updated | date_to_rfc3339 }}{% else %}{{ post.date | date_to_rfc3339 }}{% endif %}</updated>
+      <published>{{ post.date | date_to_rfc3339 }}</published>
+      <author>
+        <name>{{ post.author }}</name>
+      </author>
+      <link href="{{ post.url | absolute_url }}" />
+      <summary type="html">{{ post.excerpt | xml_escape }}</summary>
+      <content type="html">{{ post.content | xml_escape }}</content>
+      {% for tag in post.tags %}<category term="tag:{{ tag | xml_escape }}" />{% endfor %}
+      {% for tag in post.categories %}<category term="{{ tag | xml_escape }}" />{% endfor %}
+    </entry>
+  {% endfor %}
+</feed>

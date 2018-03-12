@@ -1,24 +1,24 @@
 <!-- Header -->
 <header id="header"{% if page.layout == 'landing' %} class="alt"{% endif %}>
-  <h1><a href="{{ site.baseurl }}/index.html">{{ site.title }}</a></h1>
+  <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
   <nav id="nav">
     <ul>
       <li class="special">
         <a href="#menu" class="menuToggle"><span>Menu</span></a>
         <div id="menu">
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{{ "/" | absolute_url }}">Home</a></li>
             {% assign pages = site.pages | sort: 'title' %}
             {% for my_page in pages %}
             {% if my_page.title %}
             {% unless my_page.url contains 'blog' and my_page.url contains 'page' %}
-            <li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
+            <li><a href="{{ my_page.url | absolute_url }}">{{ my_page.title }}</a></li>
             {% endunless %}
             {% endif %}
             {% endfor %}
             <!--<li><a href="#">Sign Up</a></li>-->
             <!--<li><a href="#">Log In</a></li>-->
-            <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}"
+            <li><a href="{{ "/feed.xml" | absolute_url }}"
                    class="icon fa-feed"> RSS Feed</a></li>
           </ul>
         </div>
