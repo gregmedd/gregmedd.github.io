@@ -13,7 +13,7 @@ layout: page
 				</ul>
                                 <hr />
                         {% endfor %}</section>
-                        <section>
+                        <section class="special">
 				<div class="row">
 					<div class="4u 12u$(medium)">
 						<ul class="actions vertical">
@@ -21,7 +21,7 @@ layout: page
 						</ul>
 					</div>
 					<div class="4u 12u$(medium)">
-                                                <center><h5>{% if paginator.previous_page or paginator.next_page %}Page {{ paginator.page }} of {{ paginator.total_pages }}{% endif %}</h5></center>
+                                                <h5>{% if paginator.previous_page or paginator.next_page %}Page {{ paginator.page }} of {{ paginator.total_pages }}{% endif %}</h5>
 					</div>
 					<div class="4u 12u$(medium)">
 						<ul class="actions vertical">
