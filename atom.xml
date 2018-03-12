@@ -6,7 +6,7 @@ layout: null
   <title>{{ site.title | xml_escape }}</title>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ site.url }}</id>
-  <subtitle>{{ site.description | xml_escape }}</subtitle>
+  <subtitle>{{ site.description | markdownify | strip_html | xml_escape }}</subtitle>
   <link href="{{ "/" | absolute_url }}" />
   <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml"/>
   <generator>Jekyll v{{ jekyll.version }}</generator>
